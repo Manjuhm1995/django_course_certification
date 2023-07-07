@@ -31,6 +31,7 @@ def index(request):
     # "<li><a href="...">January</a></li><li><a href="...">February</a></li>..."
 
     response_data = f"<ul>{list_items}</ul>"
+
     return HttpResponse(response_data)
 
 def monthly_challenge_by_number(request, month):
@@ -45,6 +46,7 @@ def monthly_challenge_by_number(request, month):
 
 
 def monthly_challenge(request, month):
+    print("ellaru hegiddira")
     try:
         challenge_text = monthly_challenges[month]
         response_data = f"<h1>{challenge_text}</h1>"
