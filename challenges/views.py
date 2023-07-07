@@ -41,6 +41,7 @@ def monthly_challenge_by_number(request, month):
 
     redirect_month = months[month - 1]
     redirect_path = reverse("month-challenge", args=[redirect_month]) # /challenge/january
+    print("Namaste kannadigarige")
     return HttpResponseRedirect(redirect_path)
 
 
