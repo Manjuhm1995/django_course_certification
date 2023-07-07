@@ -47,6 +47,8 @@ def monthly_challenge_by_number(request, month):
 
 def monthly_challenge(request, month):
     print("ellaru hegiddira")
+    print("ellaru elliiddira")
+    print("ellaru enmaadtiddira")
     try:
         challenge_text = monthly_challenges[month]
         response_data = f"<h1>{challenge_text}</h1>"
