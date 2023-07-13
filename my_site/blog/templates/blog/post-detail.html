@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block Title %}
+  hardcoded post title
+{% endblock %}
+{% block css_files %}
+  <link rel="stylesheet"href="{% static 'blog/post-detail.css' %}" />
+
+{% endblock %}
+
+{% block content %}
+<section id="summary">
+    <h2>Post Title</h2>
+    <article>
+        <img src="{% static 'blog/images/devaraayanadurgada betta.jpeg' %}" alt="Post Title" />
+        <address>By Manju H M</address>
+        <div>
+            Last updated on <time>July 10th</time>
+        </div>
+    </article>
+</section>
+<main>
+    <p>
+        Devarayanadurga or DD Hills which translates to “the fort of God”
+        is a tranquil hill station located near Tumkur district in the state of Karnataka.
+        Situated at an elevation of 4000 ft, Devarayanadurga is a perfect weekend getaway from Bangalore
+        to live among the trees and visit the beautifully crafted temples.
+    </p>
+
+</main>
+{% endblock %}
