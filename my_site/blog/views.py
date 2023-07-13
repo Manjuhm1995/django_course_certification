@@ -2,7 +2,7 @@ from django.shortcuts import render
 from datetime import date
 all_posts = [
     {
-        "slug": "hike-in-the-mountains",
+        "slug": "hike-in-the-mg",
         "image": "Manju H M.jpeg",
         "author":"Manju H M",
         "date": date(2021, 7, 21),
@@ -19,7 +19,7 @@ all_posts = [
         """
     },
     {
-        "slug": "hike-in-the-mountains",
+        "slug": "hike-in-the-tk",
         "image": "devaraayanadurgada betta.jpeg",
         "author":"Manju H M",
         "date": date(2021, 7, 22),
@@ -37,7 +37,7 @@ all_posts = [
     },
 
     {
-        "slug": "hike-in-the-mountains",
+        "slug": "hike-in-the-dd",
         "image": "devaraayanadurgada betta.jpeg",
         "author":"Manju H M",
         "date": date(2021, 7, 19),
@@ -61,9 +61,10 @@ def starting_page(request):
     return render(request,"blog/index.html",{"posts":latests_posts})
 
 def posts(request):
-    return render(request, "blog/all-posts.html")
+    return render(request, "blog/all-posts.html",{"posts":all_posts})
 
 
 def post_detail(request,slug):
-    return render(request, "blog/post-detail.html")
+    identified_post=next(post for post in all_posts if post["slug"]==slug)
+    return render(request, "blog/post-detail.html",{"posts":identified_post})
 
