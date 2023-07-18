@@ -16,4 +16,10 @@
         {% endfor %}
 
     </ul>
+
+    <hr>
+    <p>
+        <h3>Total number of books:{{num_books}}</h3>
+        <h3>Average rating:{{avg_rating.rating__avg|floatformat:"2"}}</h3>
+    </p>
 {% endblock %}
