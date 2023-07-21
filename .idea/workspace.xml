@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="20beef5f-7739-4777-8d1a-2ec1a63df5a1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_outlet/templates/book_outlet/book_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/book_outlet/templates/book_outlet/book_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_outlet/templates/book_outlet/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/book_outlet/templates/book_outlet/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/book_outlet/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/book_outlet/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/book_outlet/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/book_outlet/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
