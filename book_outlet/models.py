@@ -3,7 +3,9 @@ from django.core.validators import MinValueValidator,MaxValueValidator
 from django.urls import reverse
 from django.utils.text import slugify
 # Create your models here.
-
+class Country(models.Model):
+    name = models.CharField(max_length=50)
+    code = models.CharField(max_length=2)
 
 class Adress(models.Model):
     street = models.CharField(max_length=80)
@@ -21,6 +23,7 @@ class Book(models.Model):
     rating=models.IntegerField(
             validators=[MinValueValidator(1), MaxValueValidator(5)])
     author = models.ForeignKey(Author,on_delete=models.CASCADE,null=True,related_name='books')
+    published_country=models.ManyToManyField(Country)
     is_bestselling = models.BooleanField(default=False)
     slug=models.SlugField(default="",null=False, db_index=True)# title> beauty of the earth, slug version=beauty-of-the-earth
 
