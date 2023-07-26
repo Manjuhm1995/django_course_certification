@@ -15,3 +15,8 @@ class ReviewForm(forms.ModelForm):
         fields="__all__"# to apply all the fields in model are part of the form
         # exclude=[" ", " ", " "]# except some fields to apply all the fields in model are part of the form
         # fields=[" ", " ", " "]# to have necessary fields in the model are the part of the form
+        labels={"user_name":"Your Name","review_text":"Your Feedback","Your Rating":"rating"}
+        error_messages={"user_name":{
+            "required": "Your name must not be empty!",
+            "max_length": "Please enter a shorter name!"
+            }}
