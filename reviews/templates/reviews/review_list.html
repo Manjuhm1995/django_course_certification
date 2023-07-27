@@ -1,13 +1,13 @@
-extends "reviews/base.html" %}
+{% extends "reviews/base.html" %}
 
-(block title &)All Reviews( endblock)
+{% block title %}All Reviews{% endblock %}
 
-(block content *}
+{% block content %}
 
-<ul>
+    <ul>
+        {% for review in reviews %}
+            <li>{{ review.user_name}} (Rating: {{review.rating}})</li>
+        {% endfor %}
+    </ul>
 
-(for review in reviews } <li>{{ review.user_name)) (Rating: review. rating)</li> 1 endfor %)
-
-</ul>
-
-{% endblock
+{% endblock %}
