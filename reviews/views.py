@@ -13,6 +13,7 @@ class Reviews(View):
       "form": form
     })
 
+
   def post(self,request):
     form = ReviewForm(request.POST)
     if form.is_valid():
@@ -34,4 +35,13 @@ class ThankYou(TemplateView):
   def get_context_data(self, **kwargs):
     context=super().get_context_data(**kwargs)
     context["message"]="thi is working"
+    return context
+
+class SingleReviewView(TemplateView):
+  template_name ="reviews/single_review.html"
+  def get_context_data(self, **kwargs):
+    context=super().get_context_data(**kwargs)
+    id=kwargs["id"]
+    selected_view=Review.objects.get(id=id)
+    context["review"]=selected_view
     return context
