@@ -20,3 +20,6 @@ class ReviewForm(forms.ModelForm):
             "required": "Your name must not be empty!",
             "max_length": "Please enter a shorter name!"
             }}
+        # IntegerField={"min_value":1,"max_value":5}
+        IntegerField={"rating":{"min_value":1}}
+
