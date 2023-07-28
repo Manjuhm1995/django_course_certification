@@ -5,14 +5,10 @@ from django.views.generic.base import TemplateView
 from django.views import View
 from django.http import HttpResponseRedirect
 from .forms import ProfileForm
+from .models import ProfileImages
 
 
-def store_file(file):
-    with open("tmp/image.jpg","wb+") as dest:
-        for chunk in file.chunks():
-            dest.write(chunk)
-# class CreateProfileView(TemplateView):
-#     template_name = "profiles/create_profile.html"
+
 class CreateProfileView(View):
     def get(self,request):
         form=ProfileForm()
@@ -20,9 +16,9 @@ class CreateProfileView(View):
     def post(self,request):
         submitted_form=ProfileForm(request.POST,request.FILES)
         if submitted_form.is_valid():
-            image_file=request.FILES["image"]
-            # print(image_file)
-            store_file(image_file)
+            image_file=request.FILES["user_image"]
+            image_path=ProfileImages(image=image_file)
+            image_path.save()
             return HttpResponseRedirect("/profiles")
         return render(request,"profiles/create_profile.html",{"form":submitted_form})
 
