@@ -85,3 +85,7 @@ class ReviewListView(ListView):
 #     return render(request, "reviews/review.html", {
 #       "form": form
 #     })
+class AddFavoriteView(View):
+  def post(self,request):
+    review_id=request.POST["review_id"]
+    fav_review=Review.objects.get(pk=review_id)
