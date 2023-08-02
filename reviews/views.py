@@ -35,6 +35,14 @@ class ThankYou(TemplateView):
 class SingleReviewView(DetailView):
   template_name ="reviews/single_review.html"
   model = Review
+
+  def get_context_data(self, **kwargs):
+    context= super().get_context_data(**kwargs)
+    loaded_object=self.object
+    request=self.request
+    favourite_id=request.session["favorite_review"]
+    context["is_favourite"]=favourite_id==str(loaded_object.id)
+    return context
 #   django automatically takes the context key as model_name in lowercase or we can use "object"
 
 class ReviewListView(ListView):
@@ -50,44 +58,9 @@ class ReviewListView(ListView):
 
     return hellow
 
-
-# class ReviewListView(TemplateView):
-#   template_name = "reviews/review_list.html"
-#   def get_context_data(self, **kwargs):
-#     context=super().get_context_data(**kwargs)
-#     review=Review.objects.all()
-#     context["reviews"]=review
-#     return context
-
-# class SingleReviewView(TemplateView):
-#   template_name ="reviews/single_review.html"
-#   def get_context_data(self, **kwargs):
-#     context=super().get_context_data(**kwargs)
-#     id=kwargs["id"]
-#     selected_view=Review.objects.get(id=id)
-#     context["review"]=selected_view
-#     return context
-
-
-# class Reviews(View):
-#   def get(self,request):
-#     form = ReviewForm()
-#     return render(request, "reviews/review.html", {
-#       "form": form
-#     })
-#
-#
-#   def post(self,request):
-#     form = ReviewForm(request.POST)
-#     if form.is_valid():
-#       form.save()
-#       return HttpResponseRedirect("/thank-you")
-#     return render(request, "reviews/review.html", {
-#       "form": form
-#     })
 class AddFavoriteView(View):
   def post(self,request):
     review_id=request.POST["review_id"]
-    fav_review=Review.objects.get(pk=review_id)
-    request.session["favorite":fav_review]
-    return HttpResponseRedirect("/reviews/"+ review_id )
+    # fav_review=Review.objects.get(pk=review_id)
+    request.session["favorite_review"]=review_id
+    return HttpResponseRedirect("/reviews/" + review_id)
