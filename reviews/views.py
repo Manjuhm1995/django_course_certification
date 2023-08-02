@@ -40,7 +40,10 @@ class SingleReviewView(DetailView):
     context= super().get_context_data(**kwargs)
     loaded_object=self.object
     request=self.request
-    favourite_id=request.session["favorite_review"]
+    # favourite_id=request.session["favorite_review"]
+    # above line throw an error if favorite_review is not set in session before we access
+    # but below line does not thrown an error even if favorite_review is not set before we access
+    favourite_id=request.session.get("favorite_review")
     context["is_favourite"]=favourite_id==str(loaded_object.id)
     return context
 #   django automatically takes the context key as model_name in lowercase or we can use "object"
