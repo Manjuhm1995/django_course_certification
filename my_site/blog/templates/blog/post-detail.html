@@ -19,7 +19,7 @@
         {% endfor %}
     </div>
     <article>
-        <img src="{% static 'blog/images/'|add:posts.image_name %}" alt=posts.title />
+        <img src="{{ posts.image.url }}" alt=posts.title />
         <address>By <a href="mailto:{{posts.author.email}}">{{posts.author}}</a></address>
         <div>
             Last updated on <time>{{posts.date|date:"d M y"}}</time>
