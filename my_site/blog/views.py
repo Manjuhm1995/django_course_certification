@@ -21,5 +21,8 @@ def post_detail(request,slug):
     # below line provide the same functionality without much code
 
     identified_post=get_object_or_404(Post,slug=slug)
-    return render(request, "blog/post-detail.html",{"posts":identified_post})
+    return render(request,
+                  "blog/post-detail.html",
+                  {"posts":identified_post,"posts_tags":identified_post.tags.all()}
+                  )
 
