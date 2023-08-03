@@ -1,6 +1,7 @@
 from django.shortcuts import render,get_object_or_404
 from .models import Post,Tag,Author
 from django.views.generic import ListView,DetailView
+from .forms import CommentForm
 
 # Create your views here.
 class StartingPageView(ListView):
@@ -27,5 +28,6 @@ class SinglePostView(DetailView):
         context = super().get_context_data(**kwargs)
         context["posts_tags"]=self.object.tags.all()
         context["posts"]=self.object
+        context["comment_form"]=CommentForm()
 
         return context
