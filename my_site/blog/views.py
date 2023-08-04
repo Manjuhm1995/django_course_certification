@@ -63,4 +63,23 @@ class SinglePostView(View):
         return render(request,"blog/post-detail.html",context)
 
 class ReadLaterView(View):
-    pass
+    def get(self,request):
+        stored_posts=request.session.get("stored_posts")
+        context={}
+        if stored_posts is None or len(stored_posts)==0:
+            context["has_posts"]=False
+            context["posts"]=[]
+        else:
+            context["posts"]=Post.objects.filter(id__in=stored_posts)
+            context["has_posts"]=True
+        return render(request, "blog/stored_posts.html", context)
+
+    def post(self,request):
+        post_id=request.POST["post_id"]
+        stored_posts=request.session.get("stored_posts")
+        if stored_posts is None:
+            stored_posts=[]
+        if post_id not in stored_posts:
+            stored_posts.append(int(post_id))
+            request.session["stored_posts"]=stored_posts
+        return HttpResponseRedirect("/")
