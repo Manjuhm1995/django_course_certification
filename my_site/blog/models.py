@@ -42,6 +42,8 @@ class Post(models.Model):
 ################################___changes___made___121___###########################################
     tags=models.ManyToManyField(Tag)
 ################################___changes___made___###########################################
+    def __str__(self):
+        return self.title
 
 
 
